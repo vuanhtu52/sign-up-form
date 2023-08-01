@@ -1,0 +1,60 @@
+@font-face {
+    font-family: logoFont;
+    src: url(fonts/Norse-Bold.otf);
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.left {
+    flex: 1 1 40%;
+    background: no-repeat center url("images/background.jpg");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right {
+    flex-basis: 1 1 60%;
+    display: flex;
+}
+
+.logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin-top: 20vh;
+}
+
+.logo > img {
+    width: 100px;
+}
+
+.logo > div {
+    color: white;
+    font-family: logoFont;
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding-top: 16px;
+}
+
+#recognition {
+    color: white;
+    text-align: center;
+    margin-bottom: 1vh;
+}
+
+#recognition > a {
+    color: white;
+}
