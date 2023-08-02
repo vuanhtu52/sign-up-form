@@ -3,6 +3,8 @@ const firstNameInput = document.querySelector("#first-name");
 const firstNameError = document.querySelector("#first-name + span.error");
 const lastNameInput = document.querySelector("#last-name");
 const lastNameError = document.querySelector("#last-name + span.error");
+const emailInput = document.querySelector("#email");
+const emailError = document.querySelector("#email + span.error");
 let validform = true;
 
 
@@ -55,5 +57,17 @@ lastNameInput.addEventListener("input", () => {
     } else {
         lastNameInput.className = "invalid";
         lastNameError.textContent = "Please fill out this field.";
+    }
+});
+
+// When user is typing email
+const emailRegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+emailInput.addEventListener("input", () => {
+    if (emailRegExp.test(emailInput.value)) {
+        emailInput.className = "valid";
+        emailError.textContent = ""
+    } else {
+        emailInput.className = "invalid";
+        emailError.textContent = "Please enter a valid email address.";
     }
 });
