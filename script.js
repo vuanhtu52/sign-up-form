@@ -5,6 +5,8 @@ const lastNameInput = document.querySelector("#last-name");
 const lastNameError = document.querySelector("#last-name + span.error");
 const emailInput = document.querySelector("#email");
 const emailError = document.querySelector("#email + span.error");
+const phoneNumberInput = document.querySelector("#phone-number");
+const phoneNumberError = document.querySelector("#phone-number + span.error");
 let validform = true;
 
 
@@ -69,5 +71,16 @@ emailInput.addEventListener("input", () => {
     } else {
         emailInput.className = "invalid";
         emailError.textContent = "Please enter a valid email address.";
+    }
+});
+
+// When user is typing phone number
+phoneNumberInput.addEventListener("input", () => {
+    if (isValidPhoneNumber(phoneNumberInput.value)) {
+        phoneNumberInput.className = "valid";
+        phoneNumberError.textContent = "";
+    } else {
+        phoneNumberInput.className = "invalid";
+        phoneNumberError.textContent = "Please enter a 10-digit number";
     }
 });
