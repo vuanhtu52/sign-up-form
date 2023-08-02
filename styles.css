@@ -111,7 +111,26 @@ label {
 input {
     height: 30px;
     border-radius: 5px;
-    border: 0.1px solid grey;
+    border: 1px solid #E5E7EB;
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid blue;
+    box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.1);
+}
+
+input.valid {
+    border: 1px solid green;
+}
+
+input.invalid {
+    border: 1px solid red;
+}
+
+/* Style for error messages */
+.error {
+    color: red;
 }
 
 .bottom {
