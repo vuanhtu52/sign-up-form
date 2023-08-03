@@ -9,6 +9,8 @@ const phoneNumberInput = document.querySelector("#phone-number");
 const phoneNumberError = document.querySelector("#phone-number + span.error");
 const passwordInput = document.querySelector("#password");
 const passwordError = document.querySelector("#password + span.error");
+const confirmPasswordInput = document.querySelector("#confirm-password");
+const confirmPasswordError = document.querySelector("#confirm-password + span.error");
 let validform = true;
 
 
@@ -117,7 +119,18 @@ passwordInput.addEventListener("input", () => {
             const errorDiv = document.createElement("div");
             errorDiv.textContent = "Must have 8-16 characters.";
             passwordError.appendChild(errorDiv);
-        }
+        } 
+    }
+});
+
+// When user is typing confirmed password
+confirmPasswordInput.addEventListener("input", () => {
+    if (confirmPasswordInput.value === passwordInput.value) {
+        confirmPasswordInput.className = "valid";
+        confirmPasswordError.textContent = "";
+    } else {
+        confirmPasswordInput.className = "invalid";
+        confirmPasswordError.textContent = "Passwords do not match.";
     }
 });
 
