@@ -7,6 +7,8 @@ const emailInput = document.querySelector("#email");
 const emailError = document.querySelector("#email + span.error");
 const phoneNumberInput = document.querySelector("#phone-number");
 const phoneNumberError = document.querySelector("#phone-number + span.error");
+const passwordInput = document.querySelector("#password");
+const passwordError = document.querySelector("#password + span.error");
 let validform = true;
 
 
@@ -84,3 +86,41 @@ phoneNumberInput.addEventListener("input", () => {
         phoneNumberError.textContent = "Please enter a 10-digit number";
     }
 });
+
+// When user is typing password
+passwordInput.addEventListener("input", () => {
+    // If password is in correct format, remove error message and display green border
+    if (/[A-Z]/.test(passwordInput.value) && /\d/.test(passwordInput.value) && passwordInput.value.length >= 8 && passwordInput.value.length <= 16) {
+        passwordInput.className = "valid";
+        passwordError.textContent = "";
+    } else {
+    // If password is in wrong format, show red border and remove all error messages
+        passwordInput.className = "invalid";
+        passwordError.textContent = "";
+        while (passwordError.lastElementChild) {
+            passwordError.removeChild(passwordError.lastElementChild);
+        }
+        // If password misses a capital letter
+        if (!/[A-Z]/.test(passwordInput.value)) {
+            const errorDiv = document.createElement("div");
+            errorDiv.textContent = "Must have a capital letter.";
+            passwordError.appendChild(errorDiv);
+        }
+        // If password misses a number
+        if (!/\d/.test(passwordInput.value)) {
+            const errorDiv = document.createElement("div");
+            errorDiv.textContent = "Must have a number.";
+            passwordError.appendChild(errorDiv);
+        }
+        // If password is not in accepted length
+        if (passwordInput.value.length < 8 || passwordInput.value.length > 16) {
+            const errorDiv = document.createElement("div");
+            errorDiv.textContent = "Must have 8-16 characters.";
+            passwordError.appendChild(errorDiv);
+        }
+    }
+});
+
+/*
+Check if all fields are valid before submitting
+*/
