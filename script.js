@@ -28,6 +28,7 @@ function isValidPhoneNumber(phoneNumber) {
 
 // When user clicks submit button
 form.addEventListener("submit", (event) => {
+    validform = true;
     // Check if any field is empty when clicking submit
     const inputs = document.querySelectorAll("input");
     inputs.forEach(input => {
@@ -36,12 +37,11 @@ form.addEventListener("submit", (event) => {
             input.className = "invalid";
             inputError = document.querySelector(`#${input.id} + span.error`);
             inputError.textContent = "Please fill out this field."
-            validform = false;
         }
         // Check if any field has invalid value
-        // if (input.className === "invalid") {
-        //     validform = false;
-        // }
+        if (input.className === "invalid") {
+            validform = false;
+        }
     });
 
     if (!validform) {
