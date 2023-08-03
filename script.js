@@ -31,12 +31,17 @@ form.addEventListener("submit", (event) => {
     // Check if any field is empty when clicking submit
     const inputs = document.querySelectorAll("input");
     inputs.forEach(input => {
+        // Check if any field is empty when clicking submit
         if (input.value === "") {
             input.className = "invalid";
             inputError = document.querySelector(`#${input.id} + span.error`);
             inputError.textContent = "Please fill out this field."
             validform = false;
         }
+        // Check if any field has invalid value
+        // if (input.className === "invalid") {
+        //     validform = false;
+        // }
     });
 
     if (!validform) {
@@ -121,6 +126,14 @@ passwordInput.addEventListener("input", () => {
             passwordError.appendChild(errorDiv);
         } 
     }
+    // Check if password matched the confirm-password field
+    if (passwordInput.value === confirmPasswordInput.value) {
+        confirmPasswordInput.className = "valid";
+        confirmPasswordError.textContent = "";
+    } else {
+        confirmPasswordInput.className = "invalid";
+        confirmPasswordError.textContent = "Passwords do not match.";
+    }
 });
 
 // When user is typing confirmed password
@@ -134,6 +147,3 @@ confirmPasswordInput.addEventListener("input", () => {
     }
 });
 
-/*
-Check if all fields are valid before submitting
-*/
